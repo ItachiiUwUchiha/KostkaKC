@@ -10,8 +10,6 @@
         private void OnCounterClicked(object sender, EventArgs e)
         {
             Random r = new Random();
-            int diceRoll = r.Next(1, 7);
-            CounterBtn.Text = "Wynik rzutu: " + diceRoll.ToString();
             int diceRoll = 6;
             if (K4.IsChecked)
             {
@@ -35,6 +33,16 @@
         }
 
 
+
+
+        private void CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            RadioButton rb = (RadioButton)sender;
+            int maxRoll = int.Parse((string)rb.Value);
+            string fileName = "k" + maxRoll + ".jpg";
+            DiceImage.Source = fileName;
+            RollLabel.Text = String.Empty;
+        }
     }
 
 
